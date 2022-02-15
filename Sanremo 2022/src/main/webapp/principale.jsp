@@ -171,34 +171,35 @@
 		cantanti.add(artista20);
 		
 		int i=0;
-		int b =0;
+		int conta=0;
+		
 	%>
 	
-	<% for(i=0; i<20; i++){ %>
+<div class="container">
+		<% for(i=0; i<20; i++){  %>
 		
-		<div class="container">
-			<div class="col">
-				<div class="card" style="width: 250px;">
-				  <img src="<%= cantanti.get(i).getImmagine()%>" class="card-img-top" height="200" width="200">
-				  <div class="card-body">
-				    <h5 class="card-title"><%= cantanti.get(i).getNome() %></h5>
-				    <p class="card-text"><%= cantanti.get(i).getCanzone() %></p>
-				  </div>
+		<% if (conta == 0){%>
+			<div class="row">
+		<% } %>
+				<div class="col-2">
+					<div class="card" style="width: 250px;">
+				  		<img src="<%= cantanti.get(i).getImmagine()%>" class="card-img-top" height="200" width="200">
+				  		<div class="card-body">
+				    		<h5 class="card-title"><%= cantanti.get(i).getNome() %></h5>
+				    		<p class="card-text"><%= cantanti.get(i).getCanzone() %></p>
+				    		<a href="votazioni.jsp"><button type="button" class="btn btn-primary">Voto</button></a>
+				    		<%conta++; %>
+				  		</div>
+					</div>
 				</div>
+			
+				
+		<% if (conta == 4){
+			conta=0;
+		%>
 			</div>
-		</div>
-		
-	<%
-	if(b==4){
-		out.print("<br>");
-	}
-	b+=1;
-	
-	} %>
-	
-			
-	
-			
-	
+		<% } %>
+		<% } %>
+	</div>
 </body>
 </html>

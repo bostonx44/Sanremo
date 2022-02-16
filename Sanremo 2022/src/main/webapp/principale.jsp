@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.*"%>
 <%@ page import="Sanremo.Artista"%>
 <!DOCTYPE html>
 <html>
@@ -28,6 +28,30 @@
 	<header>Sanremo 2022</header>
 	
 	<%
+	
+		Locale locale = request.getLocale();
+		String language = locale.getLanguage();
+		String country = locale.getCountry();
+		
+		session.setAttribute("lingua", language);
+		session.setAttribute("stato", country);
+		
+		HashMap<String, String> Lingua = new HashMap<String, String>();
+		
+		Lingua.put("italiano", "Vota ora");
+		Lingua.put("english", "Vote now");
+		
+		String chiave ="";
+		
+		if(language.equals("it")){
+			 chiave = "italiano";
+		} else{
+			 chiave = "english";
+		}
+		
+		
+		
+		
 	
 		ArrayList<Artista> cantanti = new ArrayList<Artista>();	
 		Artista artista1 = new Artista();
@@ -170,6 +194,8 @@
 		artista20.setImmagine("img/sangiovanni.jpg");
 		cantanti.add(artista20);
 		
+		session.setAttribute("cantanti", cantanti);
+		
 		int i=0;
 		int conta=0;
 		
@@ -187,7 +213,11 @@
 				  		<div class="card-body">
 				    		<h5 class="card-title"><%= cantanti.get(i).getNome() %></h5>
 				    		<p class="card-text"><%= cantanti.get(i).getCanzone() %></p>
-				    		<a href="votazioni.jsp"><button type="button" class="btn btn-primary">Voto</button></a>
+				    		<div class="row">
+				    			<div class="col"><h6 style="color: red"><%= cantanti.get(i).getNegativi() %></h6></div>
+				    			<div class="col"><h6 style="color: green"><%= cantanti.get(i).getPositivi() %></h6></div>
+				    		</div>
+				    		<a href="votazioni.jsp?indice=<%= i %>"><button type="button" class="btn btn-primary"><%= Lingua.get(chiave) %></button></a>
 				    		<%conta++; %>
 				  		</div>
 					</div>

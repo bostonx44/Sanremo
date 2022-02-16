@@ -3,10 +3,10 @@ package Sanremo;
 public class Artista {
 	
 	String nome, canzone, immagine;
-
+	int positivi, negativi;
+	
 	public Artista() {
 		super();
-		
 	}
 
 	public String getNome() {
@@ -31,6 +31,22 @@ public class Artista {
 
 	public void setImmagine(String immagine) {
 		this.immagine = immagine;
+	}
+
+	public int getPositivi() {
+		return positivi;
+	}
+
+	public void setPositivi(int positivi) {
+		this.positivi = positivi;
+	}
+
+	public int getNegativi() {
+		return negativi;
+	}
+
+	public void setNegativi(int negativi) {
+		this.negativi = negativi;
 	}
 
 }

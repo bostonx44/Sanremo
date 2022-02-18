@@ -41,8 +41,8 @@
 			<h5 class="card-title"><%= cantanti.get(indice).getNome() %></h5>
 			<p class="card-text"><%= cantanti.get(indice).getCanzone() %></p>
 			<div class="row">
-				<div class="col"><a class="btn btn-danger" href="conferma.jsp?voto=negativo&indice=<%= indice %>"></a></div>
-				<div class="col"><a class="btn btn-success" href="conferma.jsp?voto=positivo&indice=<%= indice %>"></a></div>
+				<div class="col"><a class="btn btn-danger" href="conferma.jsp?voto=negativo&indice=<%= indice %>">Dislike</a></div>
+				<div class="col"><a class="btn btn-success" href="conferma.jsp?voto=positivo&indice=<%= indice %>">Like</a></div>
 			</div>
 		</div>
 	</div>

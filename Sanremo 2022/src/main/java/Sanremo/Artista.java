@@ -2,7 +2,7 @@ package Sanremo;
 
 public class Artista {
 	
-	String nome, canzone, immagine;
+	String nome, canzone, immagine, ultimovoto;
 	int positivi, negativi;
 	
 	public Artista() {
@@ -47,6 +47,14 @@ public class Artista {
 
 	public void setNegativi(int negativi) {
 		this.negativi = negativi;
+	}
+
+	public String getUltimovoto() {
+		return ultimovoto;
+	}
+
+	public void setUltimovoto(String ultimovoto) {
+		this.ultimovoto = ultimovoto;
 	}
 
 }

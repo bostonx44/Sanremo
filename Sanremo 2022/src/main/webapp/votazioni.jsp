@@ -35,17 +35,19 @@
 <body>
 	<header>Sanremo 2022</header>
 	
-	<div class="card" style="width: 250px;">
+	<center>
+	<div class="card" style="width: 250px;margin-top:50px;">
 		<img src="<%= cantanti.get(indice).getImmagine()%>" class="card-img-top" height="200" width="200">
 		<div class="card-body">
 			<h5 class="card-title"><%= cantanti.get(indice).getNome() %></h5>
 			<p class="card-text"><%= cantanti.get(indice).getCanzone() %></p>
 			<div class="row">
+				<div class="col"><a class="btn btn-success" href="conferma.jsp?voto=positivo&indice=<%= indice %>">Like</a></div>	
 				<div class="col"><a class="btn btn-danger" href="conferma.jsp?voto=negativo&indice=<%= indice %>">Dislike</a></div>
-				<div class="col"><a class="btn btn-success" href="conferma.jsp?voto=positivo&indice=<%= indice %>">Like</a></div>
 			</div>
 		</div>
 	</div>
+	</center>
 
 </body>
 </html>

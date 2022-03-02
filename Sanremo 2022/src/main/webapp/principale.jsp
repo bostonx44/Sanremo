@@ -3,6 +3,7 @@
     
 <%@ page import="java.util.*"%>
 <%@ page import="Sanremo.Artista"%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,10 +29,11 @@
 	<header>Sanremo 2022</header>
 	
 	<%
-			
-		Locale locale = request.getLocale();
-		String language = locale.getLanguage();
-		String country = locale.getCountry();
+		
+	
+		Locale locale = request.getLocale(); //istanzia l'oggetto
+		String language = locale.getLanguage(); //chiamo metodo lingua
+		String country = locale.getCountry(); //chiamo metodo paese
 		
 		session.setAttribute("lingua", language);
 		session.setAttribute("stato", country);
@@ -56,14 +58,16 @@
 		
 	%>
 	
-<div class="container">
+	<br><br>
+	<center>
+	<div class="container">
 		<% for(i=0; i<20; i++){  %>
 		
 		<% if (conta == 0){%>
 			<div class="row">
 		<% } %>
-				<div class="col-2">
-					<div class="card" style="width: 250px;">
+				<div class="col">
+					<div class="card" style="width: 250px; margin-bottom: 30px;">
 				  		<img src="<%= cantanti.get(i).getImmagine()%>" class="card-img-top" height="200" width="200">
 				  		<div class="card-body">
 				    		<h5 class="card-title"><%= cantanti.get(i).getNome() %></h5>
@@ -71,6 +75,16 @@
 				    		<div class="row">
 				    			<div class="col"><h6 style="color: red"><%= cantanti.get(i).getNegativi() %></h6></div>
 				    			<div class="col"><h6 style="color: green"><%= cantanti.get(i).getPositivi() %></h6></div>
+				    		</div>
+				    		<div>
+					    		<%
+					    		    String temp = cantanti.get(i).getUltimovoto();
+					    			if(temp.equals("")){
+					    				
+					    			} else {
+					    				out.print("<div style=\"color: gray\" class=\"col\"><h6>" + cantanti.get(i).getUltimovoto() + "</h6></div>");
+					    			}
+					    		%>
 				    		</div>
 				    		<a href="votazioni.jsp?indice=<%= i %>"><button type="button" class="btn btn-primary"><%= Lingua.get(chiave) %></button></a>
 				    		<%conta++; %>
@@ -84,8 +98,7 @@
 		%>
 			</div>
 		<% } %>
-		<% } %>
-		<a href="index.jsp"><button type="button" class="btn btn-primary">Torna alla Home</button></a>
+		<% } %><a href="index.jsp"><button type="button" class="btn btn-danger">Cancella i voti</button></center></a><br>
 	</div>
 </body>
 </html>
